@@ -144,7 +144,7 @@ class PrivateRecipeApiTests(TestCase):
         }
 
         url = detail_url(recipe.id)
-        res = self.client.put(url, payload)
+        self.client.put(url, payload)
 
         recipe.refresh_from_db()
         for key in payload.keys():
@@ -174,7 +174,7 @@ class PrivateRecipeApiTests(TestCase):
 
     def test_delete_other_users_recipe_error(self):
         """Test deleting other users recipe return error"""
-        other_user = create_user(email="user2@example.com", password="testpass")
+        other_user = create_user(email="user2@example.com", password="testpass")  # noqa
         recipe = create_recipe(user=other_user)
         url = detail_url(recipe.id)
         res = self.client.delete(url)
