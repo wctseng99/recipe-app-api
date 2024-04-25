@@ -18,6 +18,7 @@ def create_user(email="user@example.com", password="testpass123"):
 class ModelTests(TestCase):
     """ "Test for models"""
 
+    # User model ========================================
     def test_create_user_with_email_successful(self):
         """Test creating a new user with an email is successful"""
         email = "test@example.com"
@@ -56,6 +57,7 @@ class ModelTests(TestCase):
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
+    # Recipe model ========================================
     def test_create_recipe(self):
         """Test creating a new recipe"""
         user = get_user_model().objects.create_user(
@@ -79,3 +81,13 @@ class ModelTests(TestCase):
         tag = models.Tag.objects.create(user=user, name="Tag1")
 
         self.assertEqual(str(tag), tag.name)
+
+    # Ingredient model ========================================
+    def test_create_ingredient(self):
+        """Test creating a new ingredient"""
+        user = create_user()
+        ingredient = models.Ingredient.objects.create(
+            user=user, name="Ingredient1"
+        )  # noqa
+
+        self.assertEqual(str(ingredient), ingredient.name)
