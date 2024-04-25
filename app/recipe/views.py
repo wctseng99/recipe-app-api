@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import (
     Recipe,
     Tag,
+    Ingredient,
 )
 from recipe import serializers
 
@@ -52,6 +53,20 @@ class TagViewSet(
     permission_classes = [IsAuthenticated]
     queryset = Tag.objects.all()
     serializer_class = serializers.TagSerializer
+
+    def get_queryset(self):
+        """Return objects for the current authenticated user only"""
+        return self.queryset.filter(user=self.request.user).order_by("-name")
+
+
+class IngredientViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """Manage ingredients in the database"""
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    # The model which we want to manage in the view
+    queryset = Ingredient.objects.all()
+    serializer_class = serializers.IngredientSerializer
 
     def get_queryset(self):
         """Return objects for the current authenticated user only"""
