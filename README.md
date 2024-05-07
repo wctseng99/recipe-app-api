@@ -20,8 +20,8 @@ http://ec2-54-205-55-214.compute-1.amazonaws.com/api/docs/
 ### Endpoints
 
 #### Ingredients
-| Method   | Endpoint                          | Description                                      |
-|----------|-----------------------------------|------------------------------------------|
+| Method   | Endpoint                                  | Description                                      |
+|----------|-------------------------------------------|--------------------------------------------------|
 | `GET`    | `/api/recipe/ingredients/`                | Retrieves a list of all ingredients.             |
 | `PUT`    | `/api/recipe/ingredients/{id}/`           | Updates an existing ingredient.                  |
 | `PATCH`  | `/api/recipe/ingredients/{id}/`           | Partially updates an existing ingredient.        |
@@ -60,3 +60,33 @@ http://ec2-54-205-55-214.compute-1.amazonaws.com/api/docs/
 | `PATCH`  | `/api/user/me/`                           | Partially updates the current user's profile.    |
 | `POST`   | `/api/user/token/`                        | Generates a new authentication token.            |
 
+## Development
+
+### Setup
+
+To set up a local development environment:
+1. Clone the repository.
+   ```bash
+    git clone https://github.com/wctseng99/recipe-app-api.git
+    cd recipe-app-api
+    ```
+2. Ensure Docker is installed and running on your machine.
+3. Build the Docker container with:
+    ```bash
+    docker-compose build
+    ```
+4. Run the container with:
+    ```bash
+    docker-compose up
+    ```
+5. The API should now be accessible at:
+    - `http://localhost:8000/api/docs/` : for the API documentation.
+    - `http://localhost:8000/admin/` : for the Django admin interface.
+
+### Testing
+To run the tests, execute the following command:
+```bash
+docker-compose run --rm app sh -c "python manage.py test && flake8"
+```
+### Acknowledgements
+This project is instructed by the course "Build a Backend REST API with Python & Django - Advanced".
