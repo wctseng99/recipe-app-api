@@ -1,13 +1,62 @@
-# recipe-app-api
-This repository contains the code for the Recipe API project implementations.
+# Recipe App API
 
-The project is under development and aims to provide a RESTful API for managing recipes.
+This repository hosts the source code for the Recipe App API, a project aimed at providing a RESTful interface for managing culinary recipes. The API allows users to create, retrieve, update, and delete recipes.
 
-## Technologies Used:
-- **Git & GitHub**: Version control and source code management.
-- **GitHub Actions**: CI/CD for automating tests and deployment.
-- **Python & Django**: Backend framework for creating robust APIs.
-- **Django REST Framework**: Toolkit for building Web APIs using Django.
-- **Docker**: Containerization of the application, ensuring consistency across different environments.
-- **PostgreSQL**: Database system for reliable storage of recipe data.
-- **Unit Tests (TDD)**: Ensuring code quality and functionality through **test-driven development**.
+## Technologies Used
+- **Git & GitHub**: For version control and source code management.
+- **GitHub Actions**: Implements CI/CD to automate tests and deployments.
+- **Python & Django**: The backend framework used for creating robust APIs.
+- **Django REST Framework**: Provides tools for building Web APIs on top of Django.
+- **Docker**: Used for containerizing the application to ensure consistency across different development and production environments.
+- **PostgreSQL**: The database system chosen for reliable storage of recipe data.
+- **Unit Tests (TDD)**: Test-Driven Development approach to ensure code quality and functionality.
+
+## API Documentation
+
+### Base URL
+The API is currently being hosted on AWS EC2 and can be accessed via:
+http://ec2-54-205-55-214.compute-1.amazonaws.com/api/docs/
+
+### Endpoints
+
+#### Ingredients
+| Method   | Endpoint                          | Description                                      |
+|----------|-----------------------------------|------------------------------------------|
+| `GET`    | `/api/recipe/ingredients/`                | Retrieves a list of all ingredients.             |
+| `PUT`    | `/api/recipe/ingredients/{id}/`           | Updates an existing ingredient.                  |
+| `PATCH`  | `/api/recipe/ingredients/{id}/`           | Partially updates an existing ingredient.        |
+| `DELETE` | `/api/recipe/ingredients/{id}/`           | Deletes a specific ingredient.                   |
+
+#### Recipes
+| Method   | Endpoint                                  | Description                                      |
+|----------|-------------------------------------------|--------------------------------------------------|
+| `GET`    | `/api/recipe/recipes/`                    | Retrieves a list of all recipes.                 |
+| `POST`   | `/api/recipe/recipes/`                    | Creates a new recipe.                            |
+| `GET`    | `/api/recipe/recipes/{id}/`               | Retrieves detailed information about a recipe.   |
+| `PUT`    | `/api/recipe/recipes/{id}/`               | Updates a specific recipe.                       |
+| `PATCH`  | `/api/recipe/recipes/{id}/`               | Partially updates a specific recipe.             |
+| `DELETE` | `/api/recipe/recipes/{id}/`               | Deletes a specific recipe.                       |
+| `POST`   | `/api/recipe/recipes/{id}/upload-image/`  | Uploads an image for a specific recipe.          |
+
+#### Tags
+| Method   | Endpoint                                  | Description                                      |
+|----------|-------------------------------------------|--------------------------------------------------|
+| `GET`    | `/api/recipe/tags/`                       | Retrieves a list of all tags.                    |
+| `PUT`    | `/api/recipe/tags/{id}/`                  | Updates a specific tag.                          |
+| `PATCH`  | `/api/recipe/tags/{id}/`                  | Partially updates a specific tag.                |
+| `DELETE` | `/api/recipe/tags/{id}/`                  | Deletes a specific tag.                          |
+
+#### Schema
+| Method   | Endpoint                                  | Description                                      |
+|----------|-------------------------------------------|--------------------------------------------------|
+| `GET`    | `/api/schema/`                            | Retrieves the API schema.                        |
+
+#### User Management
+| Method   | Endpoint                                  | Description                                      |
+|----------|-------------------------------------------|--------------------------------------------------|
+| `POST`   | `/api/user/create/`                       | Registers a new user.                            |
+| `GET`    | `/api/user/me/`                           | Retrieves the current user's profile information.|
+| `PUT`    | `/api/user/me/`                           | Updates the current user's profile information.  |
+| `PATCH`  | `/api/user/me/`                           | Partially updates the current user's profile.    |
+| `POST`   | `/api/user/token/`                        | Generates a new authentication token.            |
+
